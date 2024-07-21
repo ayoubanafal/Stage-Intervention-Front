@@ -1,0 +1,22 @@
+/* styles.scss */
+
+.navbar {
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  
+    .spacer {
+      flex: 1; /* To push the buttons to the right */
+    }
+  
+    button {
+      margin-left: 12px; /* Adjust spacing between buttons */
+      color: white; /* Text color */
+    }
+  
+    .active {
+      background-color: rgba(255, 255, 255, 0.1); /* Background color when active */
+    }
+  }
+  

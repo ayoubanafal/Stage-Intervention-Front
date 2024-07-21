@@ -1,0 +1,70 @@
+<!-- dashboard.component.html -->
+<div class="dashboard-container">
+  <app-side-nav class="side-nav"></app-side-nav>
+  <div class="content-container">
+    <div class="filter-search-container">
+    <div class="filter-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Filter by Status</mat-label>
+        <mat-select [(value)]="filterStatus" (selectionChange)="getRequests()">
+          <mat-option *ngFor="let status of statusOptions" [value]="status">
+            {{ status }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <form class="search-from" [formGroup]="searchFrom">
+      <mat-form-field appearance="outline" class="search-input">
+          <input matInput placeholder="Enter Title To Search" formControlName="title" (input)="searchRequest()">
+      </mat-form-field>
+    </form>
+  </div>
+      <div class="request-list flex flex-wrap">
+        <mat-card class="request-card" *ngFor="let request of listOfRequests">
+          <div class="request-details">
+            <h2 class="request-name">{{request.title}}</h2>
+            <p class="request-description">{{request.description}}</p>
+            <mat-divider></mat-divider>
+            <div class="request-info">
+              <div class="info-row">
+                <span class="info-label">Creation Date :</span>
+                <span class="info-value">{{ request.creationDate ? (request.creationDate | date: 'MMM d, y') : 'N/A' }}</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Due Date :</span>
+                <span class="info-value">{{ request.lastUpdate ? (request.lastUpdate | date: 'MMM d, y') : 'N/A' }}</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Requester's Name :</span>
+                <span class="info-value">{{ request.employeeName }}</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Priority :</span>
+                <span class="info-value">{{ request.priority }}</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Status :</span>
+                <span class="info-value" style="color: blueviolet;">{{ request.status }}</span>
+              </div>
+            </div>
+
+            <mat-divider></mat-divider>
+            <div class="actions">
+              <button mat-icon-button color="accent" class="view-button" routerLink="/request/request-details/{{request.requestId}}">
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button mat-icon-button color="accent" class="update-button"
+                [routerLink]="'/requester/request/'+request.requestId+'/edit'">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="primary" class="delete-button" (click)="deleteRequest(request.requestId)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+
+          </div>
+        </mat-card>
+      </div>
+
+  </div>
+</div>
