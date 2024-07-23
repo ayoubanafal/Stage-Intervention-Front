@@ -47,6 +47,12 @@ export class StorageService {
     const role: string = this.getUserRole();
     return role == "Requester";
   }
+  static isTechnicianLoggedIn(): boolean {
+    if(this.getToken() === null)
+      return false;
+    const role: string = this.getUserRole();
+    return role == "Technician";
+  }
   static getUserId():string{
     const user=this.getUser();
     if(user == null)

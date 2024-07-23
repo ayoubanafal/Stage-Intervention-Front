@@ -15,6 +15,10 @@ import { DashboardComponent } from './modules/requester/components/dashboard/das
 import { DashboardComponentA } from './modules/admin/components/dashboard/dashboard.component';
 import { PostRequestComponent } from './modules/requester/components/post-request/post-request.component';
 import { UpdateRequestComponent } from './modules/requester/components/update-request/update-request.component';
+import { DashboardTComponent } from './modules/technician/components/dashboard-t/dashboard-t.component';
+import { RequestsListComponent } from './modules/technician/components/requests-list/requests-list.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { UsersListComponent } from './modules/admin/components/users-list/users-list.component';
 
 
 @NgModule({
@@ -27,7 +31,10 @@ import { UpdateRequestComponent } from './modules/requester/components/update-re
     DashboardComponent,
     DashboardComponentA,
     PostRequestComponent,
-    UpdateRequestComponent
+    UpdateRequestComponent,
+    DashboardTComponent,
+    RequestsListComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +43,8 @@ import { UpdateRequestComponent } from './modules/requester/components/update-re
     DemoAngularMaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

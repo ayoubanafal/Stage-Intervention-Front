@@ -16,10 +16,7 @@ import { UpdateRequestComponent } from './components/update-request/update-reque
   //    PostRequestComponent
   //UpdateRequestComponent
   declarations: [
-    
-  
-  
-    
+      
   ],
   imports: [
     CommonModule,

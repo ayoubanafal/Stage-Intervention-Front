@@ -1,0 +1,20 @@
+.dashboard-container {
+    display: flex;
+  }
+  
+  /* Assuming your sidebar has a fixed width */
+  .side-nav {
+    width: 250px; /* Set the width of the sidebar */
+    position: fixed; /* Fix the position of the sidebar */
+    height: 100vh; /* Make the sidebar take the full height of the viewport */
+    z-index: 1; /* Ensure the sidebar is on top */
+  }
+  
+  .content-container {
+    margin-left: 250px; /* Offset by the width of the sidebar */
+    padding: 16px; /* Add some padding */
+    width: calc(100% - 250px); /* Adjust width based on sidebar */
+    overflow: auto; /* Ensure content scrolls if it overflows */
+    z-index: 0; /* Ensure the content is behind the navbar */
+  }
+  

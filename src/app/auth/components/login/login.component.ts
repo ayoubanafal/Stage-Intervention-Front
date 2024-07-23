@@ -50,6 +50,8 @@ export class LoginComponent {
         this.router.navigateByUrl("/admin/dashboard");
       else if(StorageService.isRequesterLoggedIn())
         this.router.navigateByUrl("/requester/dashboard");
+      else if(StorageService.isTechnicianLoggedIn())
+        this.router.navigateByUrl("/technician/dashboardT");
 
       this.snackbar.open("Login successful","Close",{duration:5000});
     }else

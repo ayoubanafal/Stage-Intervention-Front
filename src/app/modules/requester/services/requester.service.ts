@@ -10,7 +10,7 @@ const BASIC_URL="http://localhost:8080/";
 })
 export class RequesterService {
   
-  constructor(private http: HttpClient) { }///change is needed
+  constructor(private http: HttpClient) { }
 
   private createAuthorizationHeader(): HttpHeaders{
     return new HttpHeaders().set(

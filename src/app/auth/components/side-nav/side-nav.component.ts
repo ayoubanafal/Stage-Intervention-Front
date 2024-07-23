@@ -15,6 +15,7 @@ export class SideNavComponent {
 
   isRequesterLoggedIn = StorageService.isRequesterLoggedIn();
   isAdminLoggedIn = StorageService.isAdminLoggedIn();
+  isTechnicianLoggedIn = StorageService.isTechnicianLoggedIn();
 
   constructor(private router:Router){}
 
@@ -22,7 +23,7 @@ export class SideNavComponent {
     this.router.events.subscribe(event => {
       this.isRequesterLoggedIn=StorageService.isRequesterLoggedIn();
       this.isAdminLoggedIn=StorageService.isAdminLoggedIn();
-
+      this.isTechnicianLoggedIn=StorageService.isTechnicianLoggedIn();
     })
   }
   logout(){

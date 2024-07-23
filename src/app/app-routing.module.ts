@@ -9,8 +9,9 @@ const routes: Routes = [
   { path: "signup", component:SignupComponent},
   { path: "admin", loadChildren: () => import("./modules/admin/admin.module").then(e => e.AdminModule) },
   { path: "requester", loadChildren: () => import("./modules/requester/requester.module").then(e => e.RequesterModule) },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default route to login
-  { path: '**', redirectTo: '/login' } // Wildcard route for a 404 page
+  { path: "technician", loadChildren: () => import("./modules/technician/technician.module").then(e => e.TechnicianModule) },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login' } 
 ];
 
 @NgModule({

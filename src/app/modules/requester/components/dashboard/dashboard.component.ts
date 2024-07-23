@@ -63,8 +63,12 @@ deleteRequest(requestId : number){
 searchRequest(){
   this.listOfRequests=[];
   const title = this.searchFrom.get('title')!.value;
+  if(title!=''){
   this.requesterService.searchRequest(title).subscribe((res)=>{
     this.listOfRequests=res;
   })
+      }
+      else
+      this.getRequests();
 }
 }

@@ -54,10 +54,10 @@
                 <mat-icon>visibility</mat-icon>
               </button>
               <button mat-icon-button color="accent" class="update-button"
-                [routerLink]="'/requester/request/'+request.requestId+'/edit'">
+                [routerLink]="'/requester/request/'+request.requestId+'/edit'" matTooltip="Edit Request">
                 <mat-icon>edit</mat-icon>
               </button>
-              <button mat-icon-button color="primary" class="delete-button" (click)="deleteRequest(request.requestId)">
+              <button mat-icon-button color="primary" class="delete-button" (click)="deleteRequest(request.requestId)"  matTooltip="Delete Request">
                 <mat-icon>delete</mat-icon>
               </button>
             </div>

@@ -1,26 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AdminRoutingModule } from './admin-routing.module';
-import { DashboardComponentA } from './components/dashboard/dashboard.component';
+import { TechnicianRoutingModule } from './technician-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DemoAngularMaterialModule } from 'src/app/DemoAngularMaterialModule';
-import { UsersListComponent } from './components/users-list/users-list.component';
 
 
 @NgModule({
-  //DashboardComponentA
-  declarations: [
-    
-  ],
+  declarations: [],
   imports: [
     CommonModule,
-    AdminRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DemoAngularMaterialModule
+    DemoAngularMaterialModule,
+    TechnicianRoutingModule
   ]
 })
-export class AdminModule { }
+export class TechnicianModule { }
