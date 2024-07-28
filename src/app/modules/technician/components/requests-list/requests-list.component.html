@@ -1,6 +1,15 @@
 <div class="dashboard-container">
     <app-side-nav class="side-nav"></app-side-nav>
     <div class="content-container">
+      <nav>
+        <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
+        <li class="leading-normal text-sm">
+        <a class="opacity-50 text-slate-700" href="javascript:;">Pages /</a>
+        </li>
+        <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Requests To Do</li>
+        </ol>
+        <h6 class="mb-0 font-bold capitalize">Requests To Do</h6>
+    </nav>
         <div class="filter-search-container">
             <div class="filter-container">
                 <mat-form-field appearance="fill">
@@ -50,12 +59,14 @@
     
                 <mat-divider></mat-divider>
                 <div class="actions">
-                  <button mat-icon-button color="accent" class="update-button" [routerLink]="'/technician/request/'+request.requestId+'/edit'" matTooltip="Edit Request Status">
+                  <button mat-icon-button color="accent" class="update-button" [routerLink]="['/technician/requestsStatusUpdate/'+request.requestId]" matTooltip="Edit Request Status">
                     <mat-icon>edit</mat-icon>
                   </button>
-                  <button mat-icon-button color="primary" class="delete-button" (click)="UnClaimRequest(request.requestId)" matTooltip="UnClaim Request">
-                    <mat-icon>delete</mat-icon>
+
+                  <button *ngIf="request.status === 'COMPLETED' || request.status === 'CANCELLED'" mat-icon-button color="warn" class="archive-button" (click)="archiveRequest(request.requestId)" matTooltip="Archive Request">
+                    <mat-icon>archive</mat-icon>
                   </button>
+
                 </div>
     
               </div>

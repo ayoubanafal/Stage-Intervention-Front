@@ -16,6 +16,7 @@ export class SideNavComponent {
   isRequesterLoggedIn = StorageService.isRequesterLoggedIn();
   isAdminLoggedIn = StorageService.isAdminLoggedIn();
   isTechnicianLoggedIn = StorageService.isTechnicianLoggedIn();
+  id=StorageService.getUserId();
 
   constructor(private router:Router){}
 

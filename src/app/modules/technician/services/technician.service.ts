@@ -32,15 +32,31 @@ export class TechnicianService {
   {
     return this.http.get(BASIC_URL + "api/technician/requests/search/"+title ,
       { headers: this.createAuthorizationHeader()})
+  } 
+  getRequestByIdT(requestId:number): Observable<any>
+  {
+    return this.http.get(BASIC_URL + "api/technician/requestById/" + requestId,
+      { headers: this.createAuthorizationHeader()})
   }
+  updateRequestStatus(requestId:number,status:string): Observable<any>
+  {
+    return this.http.put(BASIC_URL + "api/technician/request/update/"+requestId+"/"+status,
+      { headers: this.createAuthorizationHeader()})
+  }
+  archiveRequest(requestId:number): Observable<any>
+  {
+    return this.http.put(BASIC_URL + "api/technician/request/archive/"+requestId,
+      { headers: this.createAuthorizationHeader()})
+  }
+  ///////////////////////////////////////////////////////////////
   claimRequest(requestId:number,technicianId:string): Observable<any>
   {
     return this.http.put(BASIC_URL + "api/technician/request/"+ requestId +"/"+technicianId ,
       { headers: this.createAuthorizationHeader()})
   }
-  UnClaimRequest(requestId:number): Observable<any>
-  {
-    return this.http.put(BASIC_URL + "api/technician/request/"+ requestId ,
-      { headers: this.createAuthorizationHeader()})
-  }
+  // UnClaimRequest(requestId:number): Observable<any>
+  // {
+  //   return this.http.put(BASIC_URL + "api/technician/request/"+ requestId ,
+  //     { headers: this.createAuthorizationHeader()})
+  // }
 }

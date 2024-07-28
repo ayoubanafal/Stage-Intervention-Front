@@ -2,19 +2,47 @@
     display: flex;
   }
   
-  /* Assuming your sidebar has a fixed width */
   .side-nav {
-    width: 250px; /* Set the width of the sidebar */
-    position: fixed; /* Fix the position of the sidebar */
-    height: 100vh; /* Make the sidebar take the full height of the viewport */
-    z-index: 1; /* Ensure the sidebar is on top */
+    width: 250px; 
+    position: fixed;
+    height: 100vh; 
+    z-index: 1; 
   }
   
   .content-container {
-    margin-left: 250px; /* Offset by the width of the sidebar */
-    padding: 16px; /* Add some padding */
-    width: calc(100% - 250px); /* Adjust width based on sidebar */
-    overflow: auto; /* Ensure content scrolls if it overflows */
-    z-index: 0; /* Ensure the content is behind the navbar */
+    margin-left: 250px; 
+    padding: 16px; 
+    width: calc(100% - 250px); 
+    overflow: auto; 
+    z-index: 0; 
   }
+  .filter-search-container {
+    display: flex;
+    justify-content: space-between; 
+    gap: 16px;
+    padding: 16px;
+  }
+  
+  .filter-container {
+    flex: 1;
+     margin-bottom: 20px;
+    background-color: #ffffff;
+  }
+  
+  .search-form {
+    flex: 1; 
+  }
+  
+  .search-input {
+    width: 100%;
+  }
+  .hover-effect {
+    color: #64748b; 
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.hover-effect:hover {
+    color: #1e40af; 
+}
   

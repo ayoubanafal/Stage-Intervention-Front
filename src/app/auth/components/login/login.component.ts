@@ -28,9 +28,9 @@ export class LoginComponent {
     })
   }
   
-  togglePasswordVisibility(){
+  togglePasswordVisibility(event: Event): void {
+    event.preventDefault(); // Prevent form submission
     this.hidePassword = !this.hidePassword;
-  
   }
   onSubmit()
   {

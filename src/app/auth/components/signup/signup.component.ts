@@ -24,15 +24,17 @@ constructor(private fb: FormBuilder,
   {
   this.signupForm=this.fb.group({
     name: [null, [Validators.required]],
+    phone: [null, [Validators.required]],
+    position: [null, [Validators.required]],
     email: [null, [Validators.required,Validators.email]],
     password: [null, [Validators.required]],
     confirmPassword: [null, [Validators.required]]
   })
 }
 
-togglePasswordVisibility(){
+togglePasswordVisibility(event: Event): void {
+  event.preventDefault(); // Prevent form submission
   this.hidePassword = !this.hidePassword;
-
 }
 onSubmit()
 {

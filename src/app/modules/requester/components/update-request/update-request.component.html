@@ -1,8 +1,17 @@
 <div class="dashboard-container">
     <app-side-nav class="side-nav"></app-side-nav>
     <div class="content-container">
+      <nav>
+        <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
+        <li class="leading-normal text-sm">
+        <a class="opacity-50 text-slate-700" href="javascript:;">Pages /</a>
+        </li>
+        <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Update Request</li>
+        </ol>
+        <h6 class="mb-0 font-bold capitalize">Update Request</h6>
+    </nav>
       <div class="container">
-        <h2 class="form-title">Post Request</h2>
+        <h2 class="form-title">Update Request</h2>
         <form [formGroup]="updateRequestForm" class="custom-form">
           <div class="form-group">
             <label for="title" class="form-label">Title</label>
@@ -37,16 +46,6 @@
               Priority is required
             </div>
           </div>
-  
-          <!-- <div class="form-group">
-            <label for="material" class="form-label">Material</label>
-            <select id="material" class="form-control" formControlName="material">
-                <option *ngFor="let material of listOfMaterials" [value]="material">{{ material }}</option>
-            </select>
-            <div *ngIf="requestForm.get('material')?.invalid && requestForm.get('material')?.touched" class="invalid-feedback">
-              Material is required
-            </div>
-          </div> -->
   
           <button type="submit" class="inline-block w-full px-4 py-2 mt-4 mb-0 font-bold text-center text-black uppercase align-middle 
           transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in 

@@ -2,10 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponentA } from './components/dashboard/dashboard.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
+import { RequestAssigningComponent } from './components/request-assigning/request-assigning.component';
+import { TechnicianAssigningComponent } from './components/technician-assigning/technician-assigning.component';
 
 const routes: Routes = [
   {path: "dashboard", component: DashboardComponentA},
-  {path: "usersList", component: UsersListComponent}
+  {path: "usersList", component: UsersListComponent},
+  {path: "requestAssigning", component: RequestAssigningComponent},
+  {path: "technicianAssigning/:requestId", component: TechnicianAssigningComponent}
 ];
 
 @NgModule({

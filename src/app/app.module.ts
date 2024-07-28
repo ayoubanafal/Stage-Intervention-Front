@@ -19,6 +19,14 @@ import { DashboardTComponent } from './modules/technician/components/dashboard-t
 import { RequestsListComponent } from './modules/technician/components/requests-list/requests-list.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { UsersListComponent } from './modules/admin/components/users-list/users-list.component';
+import { UpdateRequestStatusComponent } from './modules/technician/components/update-request-status/update-request-status.component';
+import { RequestAssigningComponent } from './modules/admin/components/request-assigning/request-assigning.component';
+import { TechnicianAssigningComponent } from './modules/admin/components/technician-assigning/technician-assigning.component';
+import { ProfileComponent } from './auth/components/profile/profile.component';
+import { AllMaterialComponent } from './modules/material/components/all-material/all-material.component';
+import { AddMaterialComponent } from './modules/material/components/add-material/add-material.component';
+import { UpdateMaterialComponent } from './modules/material/components/update-material/update-material.component';
+import { DeleteMaterialComponent } from './modules/material/components/delete-material/delete-material.component';
 
 
 @NgModule({
@@ -34,7 +42,15 @@ import { UsersListComponent } from './modules/admin/components/users-list/users-
     UpdateRequestComponent,
     DashboardTComponent,
     RequestsListComponent,
-    UsersListComponent
+    UsersListComponent,
+    UpdateRequestStatusComponent,
+    RequestAssigningComponent,
+    TechnicianAssigningComponent,
+    ProfileComponent,
+    AllMaterialComponent,
+    AddMaterialComponent,
+    UpdateMaterialComponent,
+    DeleteMaterialComponent
   ],
   imports: [
     BrowserModule,

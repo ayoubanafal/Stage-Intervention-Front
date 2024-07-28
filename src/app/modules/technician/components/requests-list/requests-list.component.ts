@@ -43,13 +43,20 @@ export class RequestsListComponent {
        })
      }
    }
-
-   UnClaimRequest(requestId : number){
-    this.technicianService.UnClaimRequest(requestId).subscribe((res) =>{
-      this.snackBar.open("Request UnClaimed successfully", "Close",{ duration: 5000});
+   archiveRequest(requestId : number){
+    this.technicianService.archiveRequest(requestId).subscribe((res) => {
+      this.snackBar.open("Request Archived Successfully", "Close", { duration: 5000 });
       this.getAllClaimedRequests();
-  })
-   }
+    }
+  );
+}
+///////////////////////////////////////////////////////
+  //  UnClaimRequest(requestId : number){
+  //   this.technicianService.UnClaimRequest(requestId).subscribe((res) =>{
+  //     this.snackBar.open("Request UnClaimed Successfully", "Close",{ duration: 5000});
+  //     this.getAllClaimedRequests();
+  // })
+  //  }
 
 searchRequest(){
   this.listOfRequests=[];

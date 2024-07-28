@@ -2,6 +2,15 @@
 <div class="dashboard-container">
   <app-side-nav class="side-nav"></app-side-nav>
   <div class="content-container">
+    <nav>
+      <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
+      <li class="leading-normal text-sm">
+      <a class="opacity-50 text-slate-700" href="javascript:;">Pages /</a>
+      </li>
+      <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Dashboard</li>
+      </ol>
+      <h6 class="mb-0 font-bold capitalize">Dashboard</h6>
+  </nav>
     <div class="filter-search-container">
     <div class="filter-container">
       <mat-form-field appearance="fill">
@@ -46,13 +55,16 @@
                 <span class="info-label">Status :</span>
                 <span class="info-value" style="color: blueviolet;">{{ request.status }}</span>
               </div>
+
+              <div class="info-row">
+                <span class="info-label">Modification Time Left :</span>
+                <span class="info-value" style="color: red;">{{ getTimeLeft(request.creationDate) }}</span>
+              </div>
+
             </div>
 
             <mat-divider></mat-divider>
-            <div class="actions">
-              <button mat-icon-button color="accent" class="view-button" routerLink="/request/request-details/{{request.requestId}}">
-                <mat-icon>visibility</mat-icon>
-              </button>
+            <div class="actions" *ngIf="canEditOrDelete(request.creationDate)">
               <button mat-icon-button color="accent" class="update-button"
                 [routerLink]="'/requester/request/'+request.requestId+'/edit'" matTooltip="Edit Request">
                 <mat-icon>edit</mat-icon>

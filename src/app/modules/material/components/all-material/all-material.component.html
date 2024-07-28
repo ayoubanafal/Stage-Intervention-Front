@@ -1,0 +1,74 @@
+<!-- dashboard.component.html -->
+<div class="dashboard-container">
+    <app-side-nav class="side-nav"></app-side-nav>
+    <div class="content-container">
+      <nav>
+        <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
+        <li class="leading-normal text-sm">
+        <a class="opacity-50 text-slate-700" href="javascript:;">Pages /</a>
+        </li>
+        <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Material</li>
+        </ol>
+        <h6 class="mb-0 font-bold capitalize">All Materials</h6>
+    </nav>
+      <div class="filter-search-container">
+      <div class="filter-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Filter by Status</mat-label>
+          <mat-select [(value)]="filterStatus" (selectionChange)="getMaterials()">
+            <mat-option *ngFor="let status of statusOptions" [value]="status">
+              {{ status }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <form class="search-from" [formGroup]="searchFrom">
+        <mat-form-field appearance="outline" class="search-input">
+            <input matInput placeholder="Enter Name To Search" formControlName="name" (input)="searchRequest()">
+        </mat-form-field>
+      </form>
+    </div>
+        <div class="request-list flex flex-wrap">
+          <mat-card class="request-card" *ngFor="let material of listOfMaterials">
+            <div class="request-details">
+              <h2 class="request-name">{{material.name}}</h2>
+              <p class="request-description">{{material.detailedDescription}}</p>
+              <mat-divider></mat-divider>
+              <div class="request-info">
+                <div class="info-row">
+                  <span class="info-label">Integration Date :</span>
+                  <span class="info-value">{{ material.integrationDate ? (material.integrationDate | date: 'MMM d, y') : 'N/A' }}</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Estimated Life Span :</span>
+                  <span class="info-value">{{ material.lifeSpan }}</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Location :</span>
+                  <span class="info-value">{{ material.location }}</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Status :</span>
+                  <span class="info-value" style="color: blueviolet;">{{ material.status }}</span>
+                </div>
+  
+              </div>
+  
+              <mat-divider></mat-divider>
+              <div class="actions" >
+                <button mat-icon-button color="accent" class="update-button"
+                  [routerLink]="'/material/updateMaterial/'+material.materialId+'/edit'" matTooltip="Edit Material">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="primary" class="delete-button" [routerLink]="'/material/deleteMaterial/'+material.materialId+'/delete'"  matTooltip="Delete Material">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+  
+            </div>
+          </mat-card>
+        </div>
+  
+    </div>
+  </div>
+  

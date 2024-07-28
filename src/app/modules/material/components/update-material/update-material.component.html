@@ -1,0 +1,73 @@
+<div class="dashboard-container">
+    <app-side-nav class="side-nav"></app-side-nav>
+    <div class="content-container">
+      <nav>
+        <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
+        <li class="leading-normal text-sm">
+        <a class="opacity-50 text-slate-700" href="javascript:;">Pages /</a>
+        </li>
+        <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Materials</li>
+        </ol>
+        <h6 class="mb-0 font-bold capitalize">Update Material</h6>
+    </nav>
+      <div class="container">
+        <h2 class="form-title">Material</h2>
+        <form [formGroup]="updateMaterialForm" class="custom-form">
+          <div class="form-group">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" id="name" class="form-control" formControlName="name" placeholder="Enter Name">
+            <div *ngIf="updateMaterialForm.get('name')?.invalid && updateMaterialForm.get('name')?.touched" class="invalid-feedback">
+                Name is required
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="detailedDescription" class="form-label">Detailed Description</label>
+            <textarea id="detailedDescription" class="form-control" formControlName="detailedDescription" placeholder="Enter Detailed Description"></textarea>
+            <div *ngIf="updateMaterialForm.get('detailedDescription')?.invalid && updateMaterialForm.get('detailedDescription')?.touched" class="invalid-feedback">
+                Detailed Description is required
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="integrationDate" class="form-label">Integration Date</label>
+            <input type="date" id="integrationDate" class="form-control" formControlName="integrationDate">
+            <div *ngIf="updateMaterialForm.get('integrationDate')?.invalid && updateMaterialForm.get('integrationDate')?.touched" class="invalid-feedback">
+                Integration Date is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="lifeSpan" class="form-label">Life Span</label>
+            <input type="text" id="lifeSpan" class="form-control" formControlName="lifeSpan" placeholder="Enter Life Span">
+            <div *ngIf="updateMaterialForm.get('lifeSpan')?.invalid && updateMaterialForm.get('lifeSpan')?.touched" class="invalid-feedback">
+                Life Span is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" id="location" class="form-control" formControlName="location" placeholder="Enter Location">
+            <div *ngIf="updateMaterialForm.get('location')?.invalid && updateMaterialForm.get('location')?.touched" class="invalid-feedback">
+                Location is required
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="status" class="form-label">Status Of Material</label>
+            <select id="status" class="form-control" formControlName="status">
+              <option *ngFor="let status of listOfStatus" [value]="status">{{ status }}</option>
+            </select>
+            <div *ngIf="updateMaterialForm.get('status')?.invalid && updateMaterialForm.get('status')?.touched" class="invalid-feedback">
+                Status is required
+            </div>
+          </div>
+  
+          <button type="submit" class="inline-block w-full px-4 py-2 mt-4 mb-0 font-bold text-center text-black uppercase align-middle 
+          transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in 
+          tracking-tight-soft bg-gradient-to-tl from-purpule-600 to-cyan-400 hover:scale-102 hover:shadow-soft-xs active:opacity-85" (click)="updateMaterial()">Update Material</button>    
+            </form>
+      </div>
+    </div>
+  </div>
+  

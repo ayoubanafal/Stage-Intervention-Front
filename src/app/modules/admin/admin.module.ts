@@ -7,12 +7,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DemoAngularMaterialModule } from 'src/app/DemoAngularMaterialModule';
 import { UsersListComponent } from './components/users-list/users-list.component';
+import { RequestAssigningComponent } from './components/request-assigning/request-assigning.component';
+import { TechnicianAssigningComponent } from './components/technician-assigning/technician-assigning.component';
 
 
 @NgModule({
   //DashboardComponentA
   declarations: [
-    
+  
   ],
   imports: [
     CommonModule,

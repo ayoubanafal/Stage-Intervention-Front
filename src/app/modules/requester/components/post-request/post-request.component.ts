@@ -24,7 +24,8 @@ constructor(private fb:FormBuilder,
   private requesterService:RequesterService,
   private snackBar:MatSnackBar,
   private router:Router)
-{const currentDate = new Date().toISOString().split('T')[0]; 
+{const currentDate = new Date(); 
+  console.log(currentDate);
   this.requestForm=this.fb.group
   ({
     requesterId:[null,[Validators.required]],
@@ -40,7 +41,6 @@ const requesterId = StorageService.getUserId();
     {
       this.requestForm.patchValue({ requesterId });
     }
-   // this.postRequest(); 
 }
 
 

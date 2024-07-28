@@ -1,0 +1,92 @@
+<div class="dashboard-container">
+    <app-side-nav class="side-nav"></app-side-nav>
+    <div class="content-container">
+        <nav>
+            <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
+            <li class="leading-normal text-sm">
+            <a class="opacity-50 text-slate-700" href="javascript:;">Pages /</a>
+            </li>
+            <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Profile</li>
+            </ol>
+            <h6 class="mb-0 font-bold capitalize" *ngIf="isAdminLoggedIn">Admin</h6>
+            <h6 class="mb-0 font-bold capitalize" *ngIf="isTechnicianLoggedIn">Technician</h6>
+            <h6 class="mb-0 font-bold capitalize" *ngIf="isRequesterLoggedIn">Requester</h6>
+        </nav>
+        <div class="w-full px-6 mx-auto">
+    <div class="relative flex items-center p-0 mt-6 overflow-hidden bg-center bg-cover min-h-75 rounded-2xl" style="background-image: url('../assets/img/curved-images/curved0.jpg'); background-position-y: 50%">
+    <span class="absolute inset-y-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-purple-700 to-pink-500 opacity-60"></span>
+    </div>
+    <div class="relative flex flex-col flex-auto min-w-0 p-4 mx-6 -mt-16 overflow-hidden break-words border-0 shadow-blur rounded-2xl bg-white/80 bg-clip-border backdrop-blur-2xl backdrop-saturate-200">
+    <div class="flex flex-wrap -mx-3">
+    <div class="flex-none w-auto max-w-full px-3">
+    <div class="text-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
+    <img src="../assets/img/admin.png" *ngIf="isAdminLoggedIn" alt="profile_image" class="w-full shadow-soft-sm rounded-xl">
+    <img src="../assets/img/technician.png" *ngIf="isTechnicianLoggedIn" alt="profile_image" class="w-full shadow-soft-sm rounded-xl">
+    <img src="../assets/img/requester.png" *ngIf="isRequesterLoggedIn" alt="profile_image" class="w-full shadow-soft-sm rounded-xl">
+    </div>
+    </div>
+    
+    <div class="flex-none w-auto max-w-full px-3 my-auto">
+    <div class="h-full">
+    <h5 class="mb-1">{{user?.name}}</h5>
+    <p class="mb-0 font-semibold leading-normal text-sm">Role : {{user?.userRole}}</p>
+    </div>
+    </div>
+    
+    </div>
+    
+    </div>
+    </div>
+<form [formGroup]="profileForm" class="custom-form">
+    <div class="form-group">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" id="name" class="form-control" formControlName="name" placeholder="Enter name">
+        <div *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched" class="invalid-feedback">
+            name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="phone" class="form-label">Phone</label>
+        <input id="phone" class="form-control" formControlName="phone" placeholder="Enter phone">
+        <div *ngIf="profileForm.get('phone')?.invalid && profileForm.get('phone')?.touched" class="invalid-feedback">
+            Phone is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="position" class="form-label" *ngIf="isAdminLoggedIn">Position</label>
+        <label for="position" class="form-label" *ngIf="isTechnicianLoggedIn">Position</label>
+        <label for="position" class="form-label" *ngIf="isRequesterLoggedIn">Enterprise</label>
+        <input type="text" id="position" class="form-control" formControlName="position" placeholder="Enter Info">
+        <div *ngIf="profileForm.get('position')?.invalid && profileForm.get('position')?.touched" class="invalid-feedback">
+            Position is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" class="form-control" formControlName="email">
+        <div *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched" class="invalid-feedback">
+            email is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" id="password" class="form-control" formControlName="password">
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword">
+      </div>
+
+      
+
+      <button type="submit" class="inline-block w-full px-4 py-2 mt-4 mb-0 font-bold text-center text-black uppercase align-middle 
+      transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in 
+      tracking-tight-soft bg-gradient-to-tl from-purpule-600 to-cyan-400 hover:scale-102 hover:shadow-soft-xs active:opacity-85" (click)="onSubmit()">Update Profile</button>    
+        
+
+    </form>
+
+    </div>
+</div>

@@ -71,4 +71,26 @@ searchRequest(){
       else
       this.getRequests();
 }
+canEditOrDelete(creationDate: string | Date): boolean {
+  const creationDateObj = new Date(creationDate);
+  const currentDate = new Date();
+  const hoursDifference = (currentDate.getTime() - creationDateObj.getTime()) / (1000 * 60 * 60);
+ return hoursDifference <= 12;
+}
+
+getTimeLeft(creationDate: string | Date): string {
+  const creationDateObj = new Date(creationDate);
+  const currentDate = new Date();
+  const twelveHoursInMillis = 12 * 60 * 60 * 1000;
+  const timeDifference = (creationDateObj.getTime() + twelveHoursInMillis) - currentDate.getTime();
+  if (timeDifference <= 0) {
+    return 'Expired';
+  }
+
+  const hoursLeft = Math.floor(timeDifference / (1000 * 60 * 60));
+  const minutesLeft = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+  return `${hoursLeft}h ${minutesLeft}m`;
+}
+
 }

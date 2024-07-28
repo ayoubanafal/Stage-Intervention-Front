@@ -1,0 +1,160 @@
+.dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  /* Sidebar */
+  .side-nav {
+    width: 250px; /* Set the width of the sidebar */
+    position: fixed; /* Fix the position of the sidebar */
+    height: 100vh; /* Make the sidebar take the full height of the viewport */
+    z-index: 1; /* Ensure the sidebar is on top */
+    background-color: #f8f9fa; /* Add a background color */
+  }
+  
+  /* Content Container */
+  .content-container {
+    margin-left: 250px; /* Offset by the width of the sidebar */
+    padding: 16px; /* Add some padding */
+    width: calc(100% - 250px); /* Adjust width based on sidebar */
+    overflow: auto; /* Ensure content scrolls if it overflows */
+    z-index: 0; /* Ensure the content is behind the navbar */
+  }
+  
+  /* Filter and Search Container */
+  .filter-search-container {
+    display: flex;
+    justify-content: space-between; /* Align items to the start and end of the container */
+    gap: 16px; /* Add space between the filter and search input */
+    padding: 16px; /* Optional padding around the container */
+  }
+  
+  .filter-container {
+    flex: 1; /* Allow the filter to grow */
+  }
+  
+  .search-form {
+    flex: 1; /* Allow the search form to grow */
+  }
+  
+  .search-input {
+    width: 100%; /* Make the search input take full width within its container */
+  }
+  
+  /* Request List and Cards */
+  .request-list {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping of request cards */
+    justify-content: space-between;
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  .request-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: box-shadow 0.3s ease;
+    width: calc(50% - 20px); /* 50% width with gap adjustment */
+  }
+  
+  .request-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Request Details */
+  .request-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .request-name {
+    font-size: 1.5em;
+    color: #260c7a;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .request-description {
+    font-size: 1em;
+    margin-bottom: 15px;
+    color: #666666;
+  }
+  
+  .request-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .info-label {
+    font-weight: bold;
+    color: #000000;
+  }
+  
+  .info-value {
+    color: #333333;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .view-button {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 1200px) {
+    .request-card {
+      width: calc(50% - 20px); /* Adjust width for medium screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .dashboard-container {
+      flex-direction: column;
+    }
+  
+    .side-nav {
+      width: 30%;
+      height: 60px;
+      position: relative;
+    }
+  
+    .content-container {
+      margin-left: 0;
+      width: 100%;
+      padding: 10px;
+    }
+  
+    .request-card {
+      width: 100%; /* Full width on small screens */
+      margin-bottom: 20px; /* Add space between cards */
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .side-nav {
+      
+    }
+    .filter-search-container {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .filter-container,
+    .search-form {
+      width: 100%;
+    }
+  }
+  

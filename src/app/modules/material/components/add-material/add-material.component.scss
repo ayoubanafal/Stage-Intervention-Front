@@ -1,0 +1,68 @@
+
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  /* Assuming your sidebar has a fixed width */
+  .side-nav {
+    width: 250px; /* Set the width of the sidebar */
+    position: fixed; /* Fix the position of the sidebar */
+    height: 100vh; /* Make the sidebar take the full height of the viewport */
+    z-index: 1; /* Ensure the sidebar is on top */
+  }
+  
+  .content-container {
+    margin-left: 250px; /* Offset by the width of the sidebar */
+    padding: 16px; /* Add some padding */
+    width: calc(100% - 250px); /* Adjust width based on sidebar */
+    overflow: auto; /* Ensure content scrolls if it overflows */
+    z-index: 0; /* Ensure the content is behind the navbar */
+  }
+  
+  .content-container {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .container {
+    max-width: 800px; /* Adjust max-width as needed */
+    margin: 0 auto;
+  }
+  
+  .form-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    //color: #000000; /* Text color */
+  }
+  
+  .custom-form {
+    //background-color: #f8f9fa; /* Form background color */
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    font-weight: bold;
+    //color: #ab49ec; /* Label color */
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    //border: 1px solid #ffffff; /* Input border color */
+    border-radius: 4px;
+  }
+  
+  .invalid-feedback {
+    color: #dc3545; /* Error message color */
+    font-size: 14px;
+  }
+  
+  
+  
