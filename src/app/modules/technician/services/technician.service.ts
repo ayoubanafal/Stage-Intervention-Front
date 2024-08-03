@@ -48,6 +48,37 @@ export class TechnicianService {
     return this.http.put(BASIC_URL + "api/technician/request/archive/"+requestId,
       { headers: this.createAuthorizationHeader()})
   }
+  generatePDF(requestId: number): Observable<Blob> {
+    return this.http.get(BASIC_URL + "api/technician/report/" + requestId, {
+      headers: this.createAuthorizationHeader(),
+      responseType: 'blob' // This is important to handle binary data
+    });
+  }
+  
+  // Comment-related methods
+  getCommentsByRequestId(requestId: number): Observable<any> {
+    return this.http.get(BASIC_URL + "api/comments/request/" + requestId, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+  createComment(comment: { userId: number, requestId: number, text: string, creationDate: Date }): Observable<any> {
+    return this.http.post(BASIC_URL + "api/comments/add", comment, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+  updateComment(commentId: number, text: string): Observable<any> {
+    return this.http.put(BASIC_URL + "api/comments/" + commentId, { text }, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+  deleteComment(commentId: number): Observable<any> {
+    return this.http.delete(BASIC_URL + "api/comments/" + commentId, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
   ///////////////////////////////////////////////////////////////
   claimRequest(requestId:number,technicianId:string): Observable<any>
   {

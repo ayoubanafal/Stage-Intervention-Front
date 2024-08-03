@@ -59,8 +59,41 @@
           <button type="submit" class="inline-block w-full px-4 py-2 mt-4 mb-0 font-bold text-center text-black uppercase align-middle 
           transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in 
           tracking-tight-soft bg-gradient-to-tl from-purpule-600 to-cyan-400 hover:scale-102 hover:shadow-soft-xs active:opacity-85" (click)="updateRequestStatus()">Update Request Status</button>    
-            </form>
+          <br>
+          <button class="inline-block w-full px-4 py-2 mt-4 mb-0 font-bold text-center text-black uppercase align-middle 
+          transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in 
+          tracking-tight-soft bg-gradient-to-tl from-purpule-600 to-cyan-400 hover:scale-102 hover:shadow-soft-xs active:opacity-85" (click)="downloadPDF()">Download PDF Report</button>
+ 
+        </form>
+      
+    <!-- Comments Section -->
+    <div class="comments-section mt-6">
+      <h3 class="text-xl font-semibold mb-4">Comments</h3>
+      <div *ngFor="let comment of listOfComments" class="comment-item mb-4 p-4 border rounded-lg shadow-sm">
+        <div class="flex-1">
+          <p class="text-gray-700">{{ comment.text }}</p>
+          <p class="text-sm text-gray-500">{{ comment.creationDate | date:'short' }}</p>
+        </div>
+      <button (click)="deleteComment(comment.commentId)" class="text-red-500 hover:text-red-700 focus:outline-none">
+        <!-- Example with Font Awesome -->
+        <i class="fas fa-trash-alt"></i>
+      </button>
       </div>
+      <!-- Add Comment Form -->
+      <h4 class="text-lg font-semibold mt-6">Add a Comment</h4>
+      <form [formGroup]="commentForm" (ngSubmit)="addComment()" class="mt-4">
+        <div class="form-group">
+          <label for="commentText" class="form-label">Comment</label>
+          <textarea id="commentText" class="form-control" formControlName="text" placeholder="Enter your comment here" required></textarea>
+          <div *ngIf="commentForm.get('text')?.invalid && commentForm.get('text')?.touched" class="invalid-feedback">
+            Comment is required
+          </div>
+        </div>
+        <button type="submit" class="inline-block w-full px-4 py-2 mt-4 mb-0 font-bold text-center text-black uppercase align-middle 
+        transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in 
+        tracking-tight-soft bg-gradient-to-tl from-purple-600 to-cyan-400 hover:scale-102 hover:shadow-soft-xs active:opacity-85">Add Comment</button>
+      </form>
+    </div>
     </div>
   </div>
   

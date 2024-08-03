@@ -4,11 +4,13 @@ import { LoginComponent } from './auth/components/login/login.component';
 import { SignupComponent } from './auth/components/signup/signup.component';
 import { RequesterRoutingModule } from './modules/requester/requester-routing.module';
 import { ProfileComponent } from './auth/components/profile/profile.component';
+import { ChatComponent } from './auth/components/chat/chat.component';
 
 const routes: Routes = [
   { path: "login", component:LoginComponent},
   { path: "signup", component:SignupComponent},
   { path: "profile/:id", component:ProfileComponent},
+  { path: "chat", component:ChatComponent},
   { path: "admin", loadChildren: () => import("./modules/admin/admin.module").then(e => e.AdminModule) },
   { path: "requester", loadChildren: () => import("./modules/requester/requester.module").then(e => e.RequesterModule) },
   { path: "technician", loadChildren: () => import("./modules/technician/technician.module").then(e => e.TechnicianModule) },

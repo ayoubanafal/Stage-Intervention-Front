@@ -1,0 +1,110 @@
+
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  /* Assuming your sidebar has a fixed width */
+  .side-nav {
+    width: 250px; /* Set the width of the sidebar */
+    position: fixed; /* Fix the position of the sidebar */
+    height: 100vh; /* Make the sidebar take the full height of the viewport */
+    z-index: 1; /* Ensure the sidebar is on top */
+  }
+  
+  .content-container {
+    margin-left: 250px; /* Offset by the width of the sidebar */
+    padding: 16px; /* Add some padding */
+    width: calc(100% - 250px); /* Adjust width based on sidebar */
+    overflow: auto; /* Ensure content scrolls if it overflows */
+    z-index: 0; /* Ensure the content is behind the navbar */
+  }
+  
+  .content-container {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .container {
+    max-width: 800px; /* Adjust max-width as needed */
+    margin: 0 auto;
+  }
+  
+  .form-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    //color: #000000; /* Text color */
+  }
+  
+  .custom-form {
+    //background-color: #f8f9fa; /* Form background color */
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .chat {
+    margin-top: 10rem;
+}
+
+div.chat-content {
+    border-radius: .25rem;
+    height: 40rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    height: 100%;
+}
+/* Ensure the chat container takes up available space */
+.chat-content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 200px); /* Adjust based on the space taken by other elements */
+   overflow: hidden;
+ }
+
+// /* Allow the chat messages to scroll */
+.card {
+ flex: 1;
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 10px;
+}
+
+// /* Ensure the form does not overlap the chat content */
+ form {
+   margin-top: auto; /* Push the form to the bottom */
+ }
+
+ .chat-content {
+  .list-group-item {
+    display: flex;
+    align-items: flex-end; // Align messages to the bottom of the container
+    margin-bottom: 5px; // Optional: Add some spacing between messages
+
+    .message-content {
+      max-width: 70%; // Limit width for better layout
+      padding: 5px 10px;
+      border-radius: 10px;
+    }
+
+    &.outgoing {
+      justify-content: flex-end; // Align outgoing messages to the right
+      .message-content {
+        background-color: #007bff; // Outgoing message background
+        color: #fff;
+      }
+    }
+
+    &.incoming {
+      justify-content: flex-start; // Align incoming messages to the left
+      .message-content {
+        background-color: #e9ecef; // Incoming message background
+        color: #000;
+      }
+    }
+  }
+}
+

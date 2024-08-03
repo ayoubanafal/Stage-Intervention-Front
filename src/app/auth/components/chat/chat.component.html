@@ -1,0 +1,80 @@
+<!-- <div class="dashboard-container">
+    <app-side-nav class="side-nav"></app-side-nav>
+    <div class="content-container">
+<main class="chat">
+    <div class="container">
+        <div class="chat-content">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" *ngFor="let chatMessage of webSocketService.chatMessages">
+                        <strong>{{chatMessage.user}}: </strong>
+                        <span>{{chatMessage.message}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <form (ngSubmit)="sendMessage(sendForm)" #sendForm="ngForm">
+            <div class="chat-send row">
+                <div class="col-2">
+                    <input type="text" class="form-control" name="name" id="input-name" [(ngModel)]="name">
+                </div>
+                <div class="col-8">
+                    <input type="text" class="form-control" name="message" id="input-message" ngModel>
+                </div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+            </div>
+        </form>
+          
+    </div>
+
+</main>
+    </div>
+</div> -->
+<div class="dashboard-container">
+    <app-side-nav class="side-nav"></app-side-nav>
+    <div class="content-container">
+      <main class="chat">
+        <div class="container">
+          <div class="chat-content" style="display: flex;">
+            <div class="card">
+              <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush">
+                    <ng-container *ngFor="let chatMessage of webSocketService.chatMessages">
+                      <li *ngIf="chatMessage.user === name" class="list-group-item outgoing">
+                        <div class="message-content">
+                            <span>{{chatMessage.message}}</span>
+                          <strong> : {{chatMessage.user}}</strong>
+                        </div>
+                      </li>
+                      <li *ngIf="chatMessage.user !== name" class="list-group-item incoming">
+                        <div class="message-content">
+                          <strong>{{chatMessage.user}} : </strong>
+                          <span>{{chatMessage.message}}</span>
+                        </div>
+                      </li>
+                    </ng-container>
+                  </ul>
+                  
+              </ul>
+            </div>
+          </div>
+          <form (ngSubmit)="sendMessage(sendForm)" #sendForm="ngForm">
+            <div class="chat-send row">
+              <!-- <div class="col-2">
+                <input type="text" class="form-control" name="name" id="input-name" [(ngModel)]="name">
+              </div> -->
+              <div class="col-10">
+                <input type="text" class="form-control" name="message" id="input-message" ngModel>
+              </div>
+              <div class="col-2">
+                <button type="submit" class="btn btn-primary">Send</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+  </div>
+  

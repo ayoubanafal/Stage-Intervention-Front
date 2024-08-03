@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users-list',
@@ -19,7 +20,8 @@ export class UsersListComponent {
 
   constructor(private adminService:AdminService,
     private fb:FormBuilder,
-    private snackBar : MatSnackBar
+    private snackBar : MatSnackBar,
+    private router:Router
   ){
     this.getAllUsers();
     this.searchFrom = this.fb.group({
@@ -28,7 +30,13 @@ export class UsersListComponent {
   }
 
   getAllUsers(){
-    if (this.filterStatus == '' || this.filterStatus=='ALL'){
+    if (this.filterStatus == '' ){
+      this.employees=[];
+      this.adminService.getUsers().subscribe((res:any[]) =>{
+        this.employees = res.filter(user => user.userRole == 'Technician');
+        })
+    }
+    else if (this.filterStatus=='ALL'){
       this.employees=[];
       this.adminService.getUsers().subscribe((res:any[]) =>{
         this.employees = res;

@@ -44,7 +44,7 @@ export class TechnicianAssigningComponent {
     this.adminService.getUsersT().subscribe((res:any[]) => {
       this.ListOfTechnicians = res;
   });
-    
+      
   }
   getRequestById(){
 this.adminService.getRequestById(this.requestId).subscribe((res) => {

@@ -4,6 +4,7 @@ import { TechnicianService } from '../../services/technician.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { StorageService } from 'src/app/auth/services/storage/storage.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { saveAs } from 'file-saver'; 
 
 @Component({
   selector: 'app-update-request-status',
@@ -16,6 +17,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class UpdateRequestStatusComponent {
   requestId: number=this.route.snapshot.params["requestId"];
   updateFrom!: FormGroup;
+  commentForm!: FormGroup;
+  comments: any[] = []; 
+  listOfComments:any[]=[];
   statusOptions = ['PENDING','INPROGRESS','COMPLETED','DEFERRED','CANCELLED'];
   listOfPriorities: any = ['LOW' , "MEDIUM" , "HIGH"];
 
@@ -26,6 +30,7 @@ export class UpdateRequestStatusComponent {
     private router:Router
   ){
     this.getRequestByIdT();
+    this.loadComments();
   this.updateFrom=this.fb.group
   ({
     requesterId:[null,[Validators.required]],
@@ -36,6 +41,9 @@ export class UpdateRequestStatusComponent {
     priority:[null,[Validators.required]],
     status:[null,[Validators.required]]
   })
+  this.commentForm = this.fb.group({
+    text: ['', [Validators.required]]
+  });
   }
 
   getRequestByIdT(){
@@ -67,4 +75,47 @@ formatDate(dateString: string): string {
       }
     })
    }
+   ///
+   loadComments() {
+    this.technicianService.getCommentsByRequestId(this.requestId).subscribe(comments => {
+      this.listOfComments = comments;
+    });
+  }
+
+  addComment() {
+    if (this.commentForm.valid) {
+      const newComment = {
+        userId: 1, // Replace with actual user ID
+        requestId: this.requestId,
+        text: this.commentForm.get('text')?.value,
+        creationDate: new Date()
+      };
+
+      this.technicianService.createComment(newComment).subscribe(comment => {
+        this.comments.push(comment);
+        this.commentForm.reset();
+        this.snackBar.open("Comment added successfully", "Close", { duration: 5000 });
+        this.loadComments();
+      }, error => {
+        this.snackBar.open("Failed to add comment", "ERROR", { duration: 5000 });
+      });
+    }
+  }
+  deleteComment(commentId: number) {
+    this.technicianService.deleteComment(commentId).subscribe(() => {
+      this.listOfComments = this.listOfComments.filter(comment => comment.commentId !== commentId);
+      this.snackBar.open('Comment deleted successfully', 'Close', { duration: 3000 });
+    }, error => {
+      this.snackBar.open('Failed to delete comment', 'Close', { duration: 3000 });
+    });
+  }
+  downloadPDF() {
+    this.technicianService.generatePDF(this.requestId).subscribe(response => {
+      const blob = new Blob([response], { type: 'application/pdf' });
+      saveAs(blob, `request_${this.updateFrom.get('title')!.value}.pdf`);
+    }, error => {
+      this.snackBar.open('Failed to download PDF', 'Close', { duration: 3000 });
+    });
+  }
+  
 }
