@@ -6,12 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DemoAngularMaterialModule } from 'src/app/DemoAngularMaterialModule';
 import { UpdateRequestStatusComponent } from './components/update-request-status/update-request-status.component';
+import { ChatTechnicianComponent } from './chat-technician/chat-technician.component';
 
 
 @NgModule({
-  declarations: [
-    
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     FormsModule,

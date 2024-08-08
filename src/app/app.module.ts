@@ -29,6 +29,7 @@ import { UpdateMaterialComponent } from './modules/material/components/update-ma
 import { DeleteMaterialComponent } from './modules/material/components/delete-material/delete-material.component';
 import { SeeAssignedRequestsComponent } from './modules/admin/components/see-assigned-requests/see-assigned-requests.component';
 import { ChatComponent } from './auth/components/chat/chat.component';
+import { ChatTechnicianComponent } from './modules/technician/chat-technician/chat-technician.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { ChatComponent } from './auth/components/chat/chat.component';
     UpdateMaterialComponent,
     DeleteMaterialComponent,
     SeeAssignedRequestsComponent,
-    ChatComponent
+    ChatComponent,
+    ChatTechnicianComponent
   ],
   imports: [
     BrowserModule,

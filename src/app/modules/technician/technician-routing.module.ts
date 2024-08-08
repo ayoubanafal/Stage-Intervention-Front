@@ -4,11 +4,14 @@ import { DashboardTComponent } from './components/dashboard-t/dashboard-t.compon
 import { RequestsListComponent } from './components/requests-list/requests-list.component';
 import { UpdateRequestComponent } from '../requester/components/update-request/update-request.component';
 import { UpdateRequestStatusComponent } from './components/update-request-status/update-request-status.component';
+import { ChatTechnicianComponent } from './chat-technician/chat-technician.component';
 
 const routes: Routes = [
   {path: "dashboardT",component:DashboardTComponent},
   {path: "requestsList",component:RequestsListComponent},
-  {path: "requestsStatusUpdate/:requestId",component:UpdateRequestStatusComponent}
+  {path: "requestsStatusUpdate/:requestId",component:UpdateRequestStatusComponent},
+  {path: "chatT",component:ChatTechnicianComponent}
+
 ];
 
 @NgModule({

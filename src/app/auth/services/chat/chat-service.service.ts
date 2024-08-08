@@ -24,6 +24,11 @@ export class ChatServiceService {
     )
   }
 
+  public getRecentMessages(technicianId: string): Observable<ChatMessageDto[]> {
+    return this.http.get<ChatMessageDto[]>(BASIC_URL + "api/chat/messages/" + technicianId,
+      { headers: this.createAuthorizationHeader() });
+  }
+
   getUserById(id:string): Observable<any>
   {
     return this.http.get(BASIC_URL + "api/user/user/"+id ,
@@ -31,7 +36,8 @@ export class ChatServiceService {
   }
   
     public openWebSocket(){
-      this.webSocket = new WebSocket('ws://localhost:8080/chat');
+      const id =1;
+      this.webSocket = new WebSocket('ws://localhost:8080/chat/'+id);
   
       this.webSocket.onopen = (event) => {
         console.log('Open: ', event);
@@ -39,6 +45,7 @@ export class ChatServiceService {
   
       this.webSocket.onmessage = (event) => {
         const chatMessageDto = JSON.parse(event.data);
+        console.log(event.data+"in the open");
         this.chatMessages.push(chatMessageDto);
       };
   
@@ -46,8 +53,9 @@ export class ChatServiceService {
         console.log('Close: ', event);
       };
     }
-  
+    
     public sendMessage(chatMessageDto: ChatMessageDto){
+      console.log(chatMessageDto+"in the send");
       this.webSocket.send(JSON.stringify(chatMessageDto));
     }
   
