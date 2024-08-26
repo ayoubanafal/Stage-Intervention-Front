@@ -62,6 +62,15 @@ export class StorageService {
   static logout():void{
     window.localStorage.removeItem(TOKEN);
     window.localStorage.removeItem(USER);
+
+    window.location.replace('/login'); // Adjust the path as needed
+
+    // Clear the browser history after redirecting to the login page
+    setTimeout(() => {
+      window.history.pushState(null, '', window.location.href);
+      window.history.forward(); // Prevents navigating back in the history
+    }, 0);
+
   }
 
 }

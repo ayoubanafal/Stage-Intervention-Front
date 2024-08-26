@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { StorageService } from 'src/app/auth/services/storage/storage.service';
 import { TechnicianService } from 'src/app/modules/technician/services/technician.service';
+import { AdminService } from '../../services/admin.service';
 
 @Component({
   selector: 'app-see-assigned-requests',
@@ -21,15 +22,28 @@ export class SeeAssignedRequestsComponent {
   filterStatus = '';
   statusOptions = ['ALL','PENDING','INPROGRESS','COMPLETED','DEFERRED','CANCELLED'];
   searchFrom!: FormGroup;
+  unassignedRequestsCount: number = 0;
+  assignedRequestsCount: number = 0;
+  pendingRequestsCount: number = 0;
+  InProgressRequestsCount:number = 0;
+  deferredRequestsCount:number = 0;
+  cancelledRequestsCount:number = 0;
   constructor(private technicianService:TechnicianService,
     private fb:FormBuilder,
     private snackBar : MatSnackBar,
     private route: ActivatedRoute,
+    private adminService:AdminService
   ){
   this.getAllClaimedRequests();
   this.searchFrom = this.fb.group({
     title:[null]
   })
+  this.getUnassignedRequestsCount();
+    this.getAssignedRequestsCount();
+    this.getPendingRequestsCount();
+    this.getInProgressRequestsCount();
+    this.getDeferredRequestsCount();
+    this.getCancelledRequestsCount();
   }
 
 
@@ -59,4 +73,51 @@ searchRequest(){
   else
  this.getAllClaimedRequests();
 }
+getUnassignedRequestsCount() {
+  this.adminService.countUnassignedRequestsByTechnicianId().subscribe((res)=>{
+    this.unassignedRequestsCount=res;
+    console.log(res);
+  }
+    
+  );
+}
+
+getAssignedRequestsCount() {
+    this.adminService.countAssignedRequestsByTechnicianId(this.Id).subscribe((res)=>{
+      this.assignedRequestsCount=res;
+      console.log(res);
+    }
+  );
+} 
+
+getPendingRequestsCount() {
+  this.adminService.countRequestsByStatusAndTechnicianId(this.Id, 'PENDING').subscribe((res)=>{
+    this.pendingRequestsCount=res;
+    console.log(res);
+  }
+  );
+}
+getInProgressRequestsCount() {
+  this.adminService.countRequestsByStatusAndTechnicianId(this.Id, 'INPROGRESS').subscribe((res)=>{
+    this.InProgressRequestsCount=res;
+    console.log(res);
+  }
+  );
+}
+getDeferredRequestsCount() {
+  this.adminService.countRequestsByStatusAndTechnicianId(this.Id, 'DEFERRED').subscribe((res)=>{
+    this.deferredRequestsCount=res;
+    console.log(res);
+  }
+  );
+}
+getCancelledRequestsCount() {
+  this.adminService.countRequestsByStatusAndTechnicianId(this.Id, 'CANCELLED').subscribe((res)=>{
+    this.cancelledRequestsCount=res;
+    console.log(res);
+  }
+  );
+}
+
+
 }

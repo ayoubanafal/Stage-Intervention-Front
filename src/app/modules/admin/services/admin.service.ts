@@ -72,5 +72,28 @@ export class AdminService {
     return this.http.get(BASIC_URL + "api/admin/requests/search/"+title ,
       { headers: this.createAuthorizationHeader()})
   } 
-
+  /////////////////////////////////////////////////////////////
+  countUnassignedRequestsByTechnicianId(): Observable<any> {
+    return this.http.get(BASIC_URL + "api/admin/requests/unassigned", 
+      { headers: this.createAuthorizationHeader() });
+  }
+  countAllAssignedRequests(): Observable<any> {
+    return this.http.get(BASIC_URL + "api/admin/requests/AllAssigned", 
+      { headers: this.createAuthorizationHeader() });
+  }
+  
+  countAssignedRequestsByTechnicianId(technicianId: number): Observable<any> {
+    return this.http.get(BASIC_URL+"api/admin/requests/assigned/"+technicianId, 
+      { headers: this.createAuthorizationHeader() });
+  }
+  
+  countRequestsByStatusAndTechnicianId(technicianId: number, status: string): Observable<any> {
+    return this.http.get(BASIC_URL + "api/admin/requests/status/"+technicianId+"/"+status, 
+      { headers: this.createAuthorizationHeader() });
+  }
+  countRequestsByStatus(status: string): Observable<any> {
+    return this.http.get(BASIC_URL + "api/admin/requests/status/"+status, 
+      { headers: this.createAuthorizationHeader() });
+  } 
+  
 }

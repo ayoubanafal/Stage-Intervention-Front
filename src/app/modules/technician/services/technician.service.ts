@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StorageService } from 'src/app/auth/services/storage/storage.service';
-import { Chat } from '../../Chat';
 
 const BASIC_URL="http://localhost:8080/";
 
@@ -78,17 +77,6 @@ export class TechnicianService {
   deleteComment(commentId: number): Observable<any> {
     return this.http.delete(BASIC_URL + "api/comments/" + commentId, {
       headers: this.createAuthorizationHeader()
-    });
-  }
-  ///////////////////////////////////////////////////////////////
-  public addMessage(replayId: string, content: string,senderId:string) {
-    return this.http.post(BASIC_URL + "api/chat/message/"+replayId+"/"+senderId, content, {
-      headers: this.createAuthorizationHeader()
-    });
-  }
-  public getMessages(replayId: number): Observable<Chat> {
-    return this.http.get<Chat>(BASIC_URL + "api/chat/message/"+replayId, {
-      headers: this.createAuthorizationHeader(),
     });
   }
 

@@ -47,11 +47,11 @@ export class LoginComponent {
       StorageService.saveToken(res.jwt);
 
       if(StorageService.isAdminLoggedIn())
-        this.router.navigateByUrl("/admin/dashboard");
+        this.router.navigateByUrl("/admin/requestAssigning");
       else if(StorageService.isRequesterLoggedIn())
         this.router.navigateByUrl("/requester/dashboard");
       else if(StorageService.isTechnicianLoggedIn())
-        this.router.navigateByUrl("/technician/dashboardT");
+        this.router.navigateByUrl("/technician/requestsList");
 
       this.snackbar.open("Login successful","Close",{duration:5000});
     }else

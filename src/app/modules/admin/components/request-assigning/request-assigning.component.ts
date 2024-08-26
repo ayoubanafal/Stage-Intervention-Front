@@ -17,6 +17,12 @@ export class RequestAssigningComponent {//////////////////////////////////////Un
   listOfRequests:any=[];
   searchFrom!: FormGroup;
 
+  unassignedRequestsCount: number = 0;
+  assignedRequestsCount: number = 0;
+  pendingRequestsCount: number = 0;
+  InProgressRequestsCount:number = 0;
+  cancelledRequestsCount:number = 0;
+
 constructor(private adminService:AdminService,
   private fb:FormBuilder,
   private snackBar : MatSnackBar
@@ -25,6 +31,11 @@ this.getAllAvailableRequests();
 this.searchFrom = this.fb.group({
   title:[null]
 })
+this.getUnassignedRequestsCount();
+this.getAssignedRequestsCount();
+this.getCancelledRequestsCount();
+this.getInProgressRequestsCount();
+this.getPendingRequestsCount();
 }
 
 
@@ -45,11 +56,42 @@ getAllAvailableRequests(){
     else
     this.getAllAvailableRequests();
   }
-// assignRequest(requestId : number){
-//   this.adminService.assignRequest(requestId,this.technicianId).subscribe((res) =>{
-//       this.snackBar.open("Request Claimed successfully", "Close",{ duration: 5000});
-//       this.getAllAvailableRequests();
-//   })
-// }
+  getUnassignedRequestsCount() {
+    this.adminService.countUnassignedRequestsByTechnicianId().subscribe((res)=>{
+      this.unassignedRequestsCount=res;
+      console.log(res);
+    }
+      
+    );
+  }
+  getAssignedRequestsCount() {
+    this.adminService.countAllAssignedRequests().subscribe((res)=>{
+      this.assignedRequestsCount=res;
+      console.log(res);
+    }
+  );
+} 
+
+getPendingRequestsCount() {
+  this.adminService.countRequestsByStatus( 'PENDING').subscribe((res)=>{
+    this.pendingRequestsCount=res;
+    console.log(res);
+  }
+  );
+}
+getInProgressRequestsCount() {
+  this.adminService.countRequestsByStatus( 'INPROGRESS').subscribe((res)=>{
+    this.InProgressRequestsCount=res;
+    console.log(res);
+  }
+  );
+}
+getCancelledRequestsCount() {
+  this.adminService.countRequestsByStatus('CANCELLED').subscribe((res)=>{
+    this.cancelledRequestsCount=res;
+    console.log(res);
+  }
+  );
+}
 }
 

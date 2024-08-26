@@ -1,5 +1,11 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
 .dashboard-container {
   display: flex;
+  height: 100vh;
+  min-height: 100vh;
 }
 
 /* Assuming your sidebar has a fixed width */
@@ -135,4 +141,5 @@
     flex: 1 1 100%; /* Full width on small screens */
   }
 }
+
 

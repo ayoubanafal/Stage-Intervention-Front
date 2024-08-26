@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { StorageService } from 'src/app/auth/services/storage/storage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { saveAs } from 'file-saver'; 
+import { AuthService } from 'src/app/auth/services/auth/auth.service';
 
 @Component({
   selector: 'app-update-request-status',
@@ -22,12 +23,14 @@ export class UpdateRequestStatusComponent {
   listOfComments:any[]=[];
   statusOptions = ['PENDING','INPROGRESS','COMPLETED','DEFERRED','CANCELLED'];
   listOfPriorities: any = ['LOW' , "MEDIUM" , "HIGH"];
+  currentUserId!:string;
 
   constructor(private technicianService:TechnicianService,
     private route: ActivatedRoute,
     private fb:FormBuilder,
     private snackBar : MatSnackBar,
-    private router:Router
+    private router:Router,
+    private authService:AuthService
   ){
     this.getRequestByIdT();
     this.loadComments();
@@ -44,6 +47,7 @@ export class UpdateRequestStatusComponent {
   this.commentForm = this.fb.group({
     text: ['', [Validators.required]]
   });
+  this.currentUserId=StorageService.getUserId();
   }
 
   getRequestByIdT(){
@@ -85,7 +89,7 @@ formatDate(dateString: string): string {
   addComment() {
     if (this.commentForm.valid) {
       const newComment = {
-        userId: 1, // Replace with actual user ID
+        userId: Number(this.currentUserId), //1 Replace with actual user ID
         requestId: this.requestId,
         text: this.commentForm.get('text')?.value,
         creationDate: new Date()

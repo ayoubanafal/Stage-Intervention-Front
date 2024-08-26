@@ -16,7 +16,6 @@ import { AdminService } from 'src/app/modules/admin/services/admin.service';
 })
 export class ChatComponent implements OnInit, OnDestroy {
   user:any;
-  //techId!:string;
   user2:any;
   admin!:string;
   selectedName!:string;
@@ -25,7 +24,6 @@ export class ChatComponent implements OnInit, OnDestroy {
   name!:string;
   ListOfTechnicians:any=[];
   selectedTechnicianId!: string;
-  //techId!:string;
   currentUserId=StorageService.getUserId();
   isAdminLoggedIn = StorageService.isAdminLoggedIn();
   chatMessages: ChatMessageDto[] = [];
@@ -48,10 +46,6 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.id=1;
     if(this.currentUserId!=this.id)
     this.fetchRecentMessages();
-    // if (this.webSocketService.webSocket.readyState !== WebSocket.OPEN) {
-    //   console.log('WebSocket is not open. Reopening...');
-    //   this.webSocketService.openWebSocket();
-    // } 
   }
 
   ngOnDestroy(): void {
@@ -67,7 +61,6 @@ export class ChatComponent implements OnInit, OnDestroy {
     if(this.currentUserId==this.id){
     this.webSocketService.getRecentMessages(this.selectedTechnicianId).subscribe((messages: ChatMessageDto[]) => {
       this.webSocketService.chatMessages = messages;
-      //this.cdr.detectChanges();
     });}
     else
     {
@@ -75,21 +68,14 @@ export class ChatComponent implements OnInit, OnDestroy {
         this.webSocketService.chatMessages = messages;
         this.cdr.detectChanges();
       });}
-      // if (this.webSocketService.webSocket.readyState !== WebSocket.OPEN) {
-      //   console.log('WebSocket is not open. Reopening...');
-      //   this.webSocketService.openWebSocket();
-      // } 
   } 
   onTechnicianSelect(event: any) {
     this.selectedTechnicianId = event.target.value;
     this.fetchRecentMessages();
-    //this.webSocketService.openWebSocket();
   }
 
   sendMessage(sendForm: NgForm) {
-    //this.fetchRecentMessages();
     this.id=1;
-   // const techId=this.selectedTechnicianId;
     const chatMessageDto = new ChatMessageDto(this.name, sendForm.value.message,this.selectedTechnicianId);
 
     if(this.currentUserId!=this.id)
@@ -105,10 +91,6 @@ export class ChatComponent implements OnInit, OnDestroy {
 
     this.webSocketService.sendMessage(chatMessageDto);
     sendForm.controls['message'].reset();
-    // if (this.webSocketService.webSocket.readyState !== WebSocket.OPEN) {
-    //   console.log('WebSocket is not open. Reopening...');
-    //   this.webSocketService.openWebSocket();
-    // } 
   }
   getUserName(){
     this.webSocketService.getUserById(StorageService.getUserId()).subscribe((res)=>{
