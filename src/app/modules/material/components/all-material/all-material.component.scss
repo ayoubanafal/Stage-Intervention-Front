@@ -17,6 +17,13 @@
     overflow: auto; /* Ensure content scrolls if it overflows */
     z-index: 0; /* Ensure the content is behind the navbar */
   }
+  .add-button {
+    background-color: #ffffff; /* Purple theme for consistency */
+    color: rgb(126, 126, 126);
+    border-radius: 50%; /* Circular button */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: box-shadow 0.3s ease;
+}
   
   .filter-search-container {
     display: flex;

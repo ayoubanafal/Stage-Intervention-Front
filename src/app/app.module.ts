@@ -29,7 +29,8 @@ import { UpdateMaterialComponent } from './modules/material/components/update-ma
 import { DeleteMaterialComponent } from './modules/material/components/delete-material/delete-material.component';
 import { SeeAssignedRequestsComponent } from './modules/admin/components/see-assigned-requests/see-assigned-requests.component';
 import { ChatComponent } from './auth/components/chat/chat.component';
-
+import { ArchivedRequestsComponent } from './modules/admin/components/archived-requests/archived-requests.component';
+import { PdfGeneratorComponent } from './modules/admin/components/pdf-generator/pdf-generator.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,9 @@ import { ChatComponent } from './auth/components/chat/chat.component';
     UpdateMaterialComponent,
     DeleteMaterialComponent,
     SeeAssignedRequestsComponent,
-    ChatComponent
+    ChatComponent,
+    ArchivedRequestsComponent,
+    PdfGeneratorComponent
   ],
   imports: [
     BrowserModule,

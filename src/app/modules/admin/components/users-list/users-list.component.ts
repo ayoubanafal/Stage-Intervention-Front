@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { saveAs } from 'file-saver'; 
 
 @Component({
   selector: 'app-users-list',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
     '../../../../../assets/css/nucleo-svg.css',
     '../../../../../assets/css/soft-ui-dashboard-tailwind.css']
 })
-export class UsersListComponent {
+export class UsersListComponent{
   userRoles=['ALL','Requester','Technician'];
   employees:any=[];
   searchFrom!: FormGroup;
@@ -21,7 +22,7 @@ export class UsersListComponent {
   constructor(private adminService:AdminService,
     private fb:FormBuilder,
     private snackBar : MatSnackBar,
-    private router:Router
+    private router:Router,
   ){
     this.getAllUsers();
     this.searchFrom = this.fb.group({
@@ -83,4 +84,5 @@ export class UsersListComponent {
       }
     })
   }
+
 }

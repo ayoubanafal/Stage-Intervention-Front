@@ -1,0 +1,38 @@
+<div class="dashboard-container">
+    <app-side-nav class="side-nav"></app-side-nav>
+    <div class="content-container">
+      <nav class="bg-transparent rounded-lg">
+        <ol class="flex flex-wrap pt-1 mr-12 sm:mr-16">
+          <li class="leading-normal text-sm">
+            <a class="opacity-50 text-slate-700" href="javascript:;">Pages /</a>
+          </li>
+          <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Generate PDF Report</li>
+        </ol>
+        <h6 class="mb-0 font-bold capitalize">Generate PDF Report</h6>
+      </nav>
+  
+      <div class="container mt-6">
+        <h2 class="text-2xl font-semibold mb-4">Generate PDF Report</h2>
+        <form (ngSubmit)="generatePDF()" class="space-y-6">
+  
+          <div class="form-group">
+            <label for="startDate" class="block text-sm font-medium text-gray-700">Start Date:</label>
+            <input type="date" id="startDate" [(ngModel)]="startDate" name="startDate" required class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          </div>
+  
+          <div class="form-group">
+            <label for="endDate" class="block text-sm font-medium text-gray-700">End Date:</label>
+            <input type="date" id="endDate" [(ngModel)]="endDate" name="endDate" required class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          </div>
+  
+          <button type="submit" class="inline-block w-full px-4 py-2 mt-4 mb-0 font-bold text-center text-black uppercase align-middle 
+          transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in 
+          tracking-tight-soft bg-gradient-to-tl from-purpule-600 to-cyan-400 hover:scale-102 hover:shadow-soft-xs active:opacity-85">
+            Generate PDF
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+  

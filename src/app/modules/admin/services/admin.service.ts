@@ -95,5 +95,33 @@ export class AdminService {
     return this.http.get(BASIC_URL + "api/admin/requests/status/"+status, 
       { headers: this.createAuthorizationHeader() });
   } 
+  ///////////////////////////////////
+  getArchivedRequestsByTechnicianId(id:string):Observable<any>{
+    return this.http.get(BASIC_URL + "api/admin/getArchivedRequests/"+id,{
+        headers: this.createAuthorizationHeader()
+    });
+  }
+  searchArchivedRequestByTitle(title:String):Observable<any>{
+    return this.http.get(BASIC_URL + "api/admin/searchArchivedRequests/search/"+title,{
+        headers: this.createAuthorizationHeader()
+    });
+  }
+  ////////////////////////////////////////////////
+  // generatePDF(technicianId: number): Observable<Blob> {
+  //   return this.http.get(BASIC_URL + "api/admin/report/" + technicianId, {
+  //     headers: this.createAuthorizationHeader(),
+  //     responseType: 'blob' // This is important to handle binary data
+  //   });
+  // }
+
+  generatePDF(technicianId: number, startDate: string, endDate: string): Observable<Blob> {
+    // Construct the URL with query parameters
+    const url = `${BASIC_URL}api/admin/report/${technicianId}?startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}`;
+  
+    return this.http.get(url, {
+      headers: this.createAuthorizationHeader(),
+      responseType: 'blob' // Important for handling binary data
+    });
+  }
   
 }

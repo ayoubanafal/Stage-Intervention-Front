@@ -63,7 +63,8 @@ searchRequest(){
   const title = this.searchFrom.get('title')!.value;
   if(title!=''){
   this.technicianService.searchRequest(title).subscribe((res)=>{
-    this.listOfRequests=res;
+    this.listOfRequests=res.filter((request: { technicianId: string; }) => request.technicianId == this.technicianId );
+    console.log(this.listOfRequests);
   })}
   else
   this.getAllClaimedRequests();

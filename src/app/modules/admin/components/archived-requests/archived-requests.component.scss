@@ -1,0 +1,48 @@
+.dashboard-container {
+    display: flex;
+  }
+  
+  .side-nav {
+    width: 250px; 
+    position: fixed;
+    height: 100vh; 
+    z-index: 1; 
+  }
+  
+  .content-container {
+    margin-left: 250px; 
+    padding: 16px; 
+    width: calc(100% - 250px); 
+    overflow: auto; 
+    z-index: 0; 
+  }
+  .filter-search-container {
+    display: flex;
+    justify-content: space-between; 
+    gap: 16px;
+    padding: 16px;
+  }
+  
+  .filter-container {
+    flex: 1;
+     margin-bottom: 20px;
+    background-color: #ffffff;
+  }
+  
+  .search-form {
+    flex: 1; 
+  }
+  
+  .search-input {
+    width: 100%;
+  }
+  .hover-effect {
+    color: #64748b; 
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.hover-effect:hover {
+    color: #1e40af; 
+}
+  

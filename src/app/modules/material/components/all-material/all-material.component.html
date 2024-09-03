@@ -22,6 +22,9 @@
           </mat-select>
         </mat-form-field>
       </div>
+      <button mat-icon-button color="primary" class="add-button" [routerLink]="['/material/addMaterial']" matTooltip="Add New Material">
+        <mat-icon>add</mat-icon>
+      </button>
       <form class="search-from" [formGroup]="searchFrom">
         <mat-form-field appearance="outline" class="search-input">
             <input matInput placeholder="Enter Name To Search" formControlName="name" (input)="searchRequest()">
